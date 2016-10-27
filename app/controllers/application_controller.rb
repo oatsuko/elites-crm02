@@ -16,5 +16,8 @@ class ApplicationController < ActionController::Base
     # deeviseで管理されているモデルにカラムを追加した場合、追加したカラム名を、deviseのストロングパラメータに追加しないといいけない<br>
     # `application_controller.rb`に独自のメソッドで定義しないといけない
     devise_parameter_sanitizer.permit(:sign_up, keys:[:image_url])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:image_url])
+    
+    
   end
 end
