@@ -5,6 +5,8 @@
     <dl>
       <dt>お名前</dt>
       <dd style="margin:0px 0px 10px 20px"><%= @customer.full_name %></dd>
+      <!--<dt>プロフィール画像</dt>-->
+      <!--<dd style="margin:0px 0px 10px 20px"><%#= image_tag'current_user.image_url' %></dd>-->
       <dt>電子メール</dt>
       <dd style="margin:0px 0px 10px 20px"><%= @customer.email %></dd>
       <dt>所属会社</dt>
@@ -29,6 +31,18 @@
         </div>
       </div>
     <% end %>
+    
+     <% if @comment.errors.any? %>
+    <div class="alert alert-danger">
+      <p><b><%= @comment.errors.count %>件のエラーがあります</b></p>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
       
     <%= form_for(@comment, url: { controller: :comments, action: :create }) do |f| %>
       <div class="form-group">
