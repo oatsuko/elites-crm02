@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:given_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:family_name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:given_name])
+    #【課題9-(2)】
+    # deeviseで管理されているモデルにカラムを追加した場合、追加したカラム名を、deviseのストロングパラメータに追加しないといいけない<br>
+    # `application_controller.rb`に独自のメソッドで定義しないといけない
     devise_parameter_sanitizer.permit(:sign_up, keys:[:image_url])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:image_url])
+    
+    
   end
 end
